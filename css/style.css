@@ -299,10 +299,6 @@
             width: 35px;
         }
 
-        #three:checked ~ .button label.three {
-            width: 35px;
-        }
-
         #two:checked ~ .button label.one {
             width: 15px;
         }
@@ -350,6 +346,40 @@
             }
             .card-wrapper h2 {
                 font-size: 30px;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .header-container {
+                height: 90vh;
+                width: 100vw;
+
+                background-position: top;
+                background-size: contain;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                box-sizing: border-box;
+                padding: 0 112px;
+            }
+
+            .card{
+                width: 150px;
+                height: 150px;
+            }
+            .card-text {
+                width: 50%;
+                letter-spacing: 0.1px;
+                color: rgb(182, 182, 182);
+            }
+
+            .card:hover > .card-wrapper::before {
+                height: 140px;
+                width: 140px;
+                opacity: 1;
+            }
+            .card-wrapper h2 {
+                font-size: 20px;
             }
         }
         

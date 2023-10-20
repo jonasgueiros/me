@@ -2,7 +2,7 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,0,-25" />
         <script src="https://unpkg.com/scrollreveal"></script>
@@ -42,17 +42,31 @@
         <main class="container">
             <input type="radio" name="dot" id="one">
             <input type="radio" name="dot" id="two">
+            
             <div class="card-container">
-                <div class="card">
+                <div class="card card-projeto1" onclick="showImages('projeto1')">
                     <div class="card-wrapper">
                         <h2>Projeto 1</h2>
                         <p>!</p>
                     </div>
                 </div>
                 <div class="card-text">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
+                    Uma aplicação em Python que permite aos usuários controlar suas despesas pessoais, registrando informações como descrição, valor, data e categoria de cada gasto. Além disso, a aplicação oferece a funcionalidade de visualização dos gastos por mês, o que facilita o acompanhamento e a análise das finanças em períodos específicos.
                 </div>
             </div>
+            
+            <!-- Div para exibir as imagens do projeto -->
+            <div id="image-popup" class="image-popup">
+                <div class="popup-content">
+                    <span class="close-popup" onclick="closePopup()">&times;</span>
+                    <div id="popup-images" class="popup-images"></div>
+                    <div class="popup-controls">
+                        <button onclick="prevImage()">&#8249; Anterior</button>
+                        <button onclick="nextImage()">Próxima &#8250;</button>
+                    </div>
+                </div>
+            </div>
+            
             <div class="card-container">
                 <div class="card">
                     <div class="card-wrapper">
@@ -64,6 +78,7 @@
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
                 </div>
             </div>
+            
             <div class="card-container">
                 <div class="card">
                     <div class="card-wrapper">
@@ -75,6 +90,7 @@
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
                 </div>
             </div>
+            
             <div class="button">
                 <label for="one" class="one active"></label>
                 <label for="two" class="two"></label>

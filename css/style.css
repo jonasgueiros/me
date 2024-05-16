@@ -329,6 +329,7 @@ span{
 .card-text {
     width: 40%;
     letter-spacing: 1px;
+    font-size: 15px;
     color: rgb(0, 172, 1);
 }
 

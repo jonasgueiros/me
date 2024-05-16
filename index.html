@@ -1,123 +1,104 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,0,-25" />
-        <script src="https://unpkg.com/scrollreveal"></script>
-        <title>Portfólio</title>
-    </head>
-    <body>
-        <header class="header-container">
-            <div class="header">
-                <div class="checkbox-container">
-                    <div class="checkbox-wrapper">
-                        <input type="checkbox" id="toggle">
-                        <label class="checkbox" for="toggle">
-                            <div class="trace"></div>
-                            <div class="trace"></div>
-                            <div class="trace"></div>
-                        </label>
-                        <div class="menu"></div>
-                        <nav class="items">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="prj.html">Projetos</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <div class="reveal1">
-                <h1>Jonas Gueiros</h1>
-                <h2>Developer</h2>
-                <div class="socials">
-                    <a href="https://www.linkedin.com/in/jonasgueiros/?locale=en_US" target="_blank">Linkedin<i class="material-symbols-outlined">open_in_new</i></a>
-                    <a href="https://github.com/jonasgueiros" target="_blank">Github<i class="material-symbols-outlined">open_in_new</i></a>
-                </div>
-            </div>
-        </header>
-        <main class="container">
-            <section class="about">
-                <div class="main">
-                    <div class="text">
-                        <h2><span>Full-Stack | </span>Focado em Back-End </h2>
-                        <p>
-                            Desenvolvedor de Software, Web e Gerenciamento de dados. 
-                            Trabalhando em alguns pequenos projetos pessoais para aprimorar minhas habilidades. 
-                            Disponivel para contribuir com minhas habilidades e conhecimentos.   
-                        </p>
-                        <p>
-                            Meu objetivo é viver com o que sei fazer, programar. Minha ambiação é viajar e conheçer diversas culturas!
-                        </p>
-                        <p>
-                            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-                            <img align="center" alt="Csharp" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/csharp/csharp-original.svg">
-                            <img align="center" alt="Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
-                            <img align="center" alt="HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-                            <img align="center" alt="CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-                            <img align="center" alt="Python" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
-                            <img align="center" alt="php" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/1119b9f84c0290e0f0b38982099a2bd027a48bf1/icons/php/php-original.svg">
-                    </p>   
-                </div>
-            </section>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jonas Gueiros</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,0,-25" />
+    <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body>
+    <header class="header">
+        <a href="#home" class="logo">J
+        <span>G</span></a>
+        
+        <i class='bx bx-menu' id="menu-icon"></i>
+        
+        <!-- Navigation menu if needed -->
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+        </nav>
+    </header>
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>  <span>Jonas Gueiros</span></h1>
+            <h3 class="text-animation">Hello World, I'm a <span></span></h3>
+            <p>Trabalhando em alguns pequenos projetos pessoais para aprimorar minhas habilidades. 
+                Disponivel para contribuir com minhas habilidades e conhecimentos.</p>
             
-            <div class="card-container">
-                <div class="card card-projeto1" onclick="showImages('projeto1')">
-                    <div class="card-wrapper">
-                        <h2>Veja Mais</h2>
-                    </div>
-                </div>
-                <div class="card-text">
-                    Uma aplicação em Python que permite aos usuários controlar suas despesas pessoais, registrando informações como descrição, valor, data e categoria de cada gasto. Além disso, a aplicação oferece a funcionalidade de visualização dos gastos por mês, o que facilita o acompanhamento e a análise das finanças em períodos específicos.
-                </div>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/jonasgueiros/?locale=en_US" target="_blank"><i class='bx bxl-linkedin' ></i></a>
+                <a href="https://github.com/jonasgueiros" target="_blank"><i class='bx bxl-github' ></i></a>
             </div>
-            
-            <!-- Div para exibir as imagens do projeto -->
-            <div id="image-popup" class="image-popup">
-                <div class="popup-content">
-                    <span class="close-popup" onclick="closePopup()">&times;</span>
-                    <div id="popup-images" class="popup-images"></div>
-                    <div class="popup-controls">
-                        <button onclick="prevImage()">&#8249; Anterior</button>
-                        <button onclick="nextImage()">Próxima &#8250;</button>
-                    </div>
-                </div>
+
+        </div>
+            <div class="home-img">
+                <img src="image.png" alt="">
             </div>
-            
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-wrapper">
-                        <h2>Projeto 2</h2>
-                        <p>!</p>
-                    </div>
-                </div>
-                <div class="card-text">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
-                </div>
+    </section>
+
+    <div class="card-container">
+        <div class="card card-projeto1" onclick="showImages('projeto1')">
+            <div class="card-wrapper">
+                <h2>Veja Mais</h2>
             </div>
-            
-            <div class="card-container">
-                <div class="card">
-                    <div class="card-wrapper">
-                        <h2>Projeto 3</h2>
-                        <p>!</p>
-                    </div>
-                </div>
-                <div class="card-text">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
-                </div>
+        </div>
+        <div class="card-text">
+            Uma aplicação em Python que permite aos usuários controlar suas despesas pessoais, registrando informações como descrição, valor, data e categoria de cada gasto. Além disso, a aplicação oferece a funcionalidade de visualização dos gastos por mês, o que facilita o acompanhamento e a análise das finanças em períodos específicos.
+        </div>
+    </div>
+    
+    <!-- Div para exibir as imagens do projeto -->
+    <div id="image-popup" class="image-popup">
+        <div class="popup-content">
+            <span class="close-popup" onclick="closePopup()">&times;</span>
+            <div id="popup-images" class="popup-images"></div>
+            <div class="popup-controls">
+                <button onclick="prevImage()">&#8249; Anterior</button>
+                <button onclick="nextImage()">Próxima &#8250;</button>
             </div>
-            
-            <div class="outros">
-                <a href="proj.html" class="button-link">Ver Mais Projetos</a>
+        </div>
+    </div>
+    
+    <div class="card-container">
+        <div class="card">
+            <div class="card-wrapper">
+                <h2>Projeto 2</h2>
+                <p>!</p>
             </div>
-            
-        </main>
-        <script src="script.js"></script>
-        <footer class="footer">
-            <a href="https://twitter.com/jonagueiro" target="_blank">Jonas Gueiros</a>        
-        </footer>
-    </body>
+        </div>
+        <div class="card-text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
+        </div>
+    </div>
+    
+    <div class="card-container">
+        <div class="card">
+            <div class="card-wrapper">
+                <h2>Projeto 3</h2>
+                <p>!</p>
+            </div>
+        </div>
+        <div class="card-text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
+        </div>
+    </div>
+    
+    <div class="outros">
+        <a href="proj.html" class="button-link">Ver Mais Projetos</a>
+    </div>
+    
+</main>
+<script src="script.js"></script>
+<footer class="footer">
+    <a href="https://twitter.com/jonagueiro" target="_blank">Jonas Gueiros</a>        
+</footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

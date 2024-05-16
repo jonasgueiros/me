@@ -123,7 +123,7 @@ span{
     box-shadow: 0 0 100px var(--main-color);
 }
 .home-content p{
-    font-size: 2rem;
+    font-size: 1.9rem;
     font-weight: 500;
     line-height: 1.8;
     max-width: 1000px;
@@ -329,7 +329,7 @@ span{
 .card-text {
     width: 40%;
     letter-spacing: 1px;
-    color: rgb(0, 193, 81);
+    color: rgb(0, 172, 1);
 }
 
 .card-wrapper {

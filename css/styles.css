@@ -1,0 +1,11 @@
+/* Main stylesheet that imports all individual CSS files */
+
+/* Import base styles */
+@import url('base.css');
+
+/* Import face-specific styles */
+@import url('face1.css');
+@import url('face2.css');
+@import url('face3.css');
+@import url('face4.css');
+

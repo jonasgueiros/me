@@ -1,0 +1,72 @@
+/* Face 3 - Skills Section Styles */
+.face-3 .skills-section {
+    text-align: left;
+    color: white;
+    padding: 2rem;
+    line-height: 1.6;
+}
+
+.face-3 h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--bg-secondary);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.face-3 p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.skill-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 255, 119, 0.1);
+    border: 1px solid var(--bg-secondary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 119, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.skill-icon:hover {
+    transform: translateY(-5px);
+}
+
+.skill-icon img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.skill-text {
+    flex: 1;
+}
+
+.skill-text span {
+    color: var(--bg-secondary);
+    font-weight: bold;
+}

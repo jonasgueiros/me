@@ -1,0 +1,79 @@
+.projects-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    height: 60vh;
+    perspective: 1000px;
+}
+
+.project-object {
+    position: relative;
+    width: 5rem;
+    height: 5rem;
+    cursor: pointer;
+    animation: float 4s ease-in-out infinite;
+}
+
+.project-shape {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-secondary);
+    border-radius: 50%; /* Default to sphere */
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.project-shape.cube {
+    border-radius: 0;
+    transform: rotateX(45deg) rotateY(45deg);
+}
+
+.project-shape.pyramid {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.project-details {
+    display: none;
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 1rem;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
+
+.project-details h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--bg-secondary);
+}
+
+.project-details p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-details a {
+    font-size: 1rem;
+    color: var(--bg-secondary);
+    text-decoration: none;
+}
+
+.project-details a:hover {
+    text-decoration: underline;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-1rem);
+    }
+}

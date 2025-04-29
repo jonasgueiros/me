@@ -3,102 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jonas Gueiros</title>
-
-    <link rel="stylesheet" href="css/style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,100,0,-25" />
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <title>Jonas Gueiros - Portfolio Cube</title>
+    <!-- Main CSS file that imports all individual face CSS files -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="header">
-        <a href="#home" class="logo">J
-        <span>G</span></a>
-        
-        <i class='bx bx-menu' id="menu-icon"></i>
-        
-        <!-- Navigation menu if needed -->
-        <nav class="navbar">
-            <a href="#home">Home</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-        </nav>
-    </header>
-    <section class="home" id="home">
-        <div class="home-content">
-            <h1>  <span>Jonas Gueiros</span></h1>
-            <h3 class="text-animation">Hello World, I'm a <span></span></h3>
-            <p>Trabalhando em alguns pequenos projetos pessoais para aprimorar minhas habilidades. 
-                Disponivel para contribuir com minhas habilidades e conhecimentos.</p>
+    <div class="viewport">
+        <div class="cube-container">
+            <div class="cube" id="cube">
+                <!-- Face placeholders - content will be loaded from separate files -->
+                <div class="face face-1" id="face1-container"></div>
+                <div class="face face-2" id="face2-container"></div>
+                <div class="face face-3" id="face3-container"></div>
+                <div class="face face-4" id="face4-container"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="nav-indicator">
+        <div class="nav-dot" data-index="0"></div>
+        <div class="nav-dot" data-index="1"></div>
+        <div class="nav-dot" data-index="2"></div>
+        <div class="nav-dot" data-index="3"></div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Load face content from separate HTML files in the html folder
+        document.addEventListener('DOMContentLoaded', function() {
+            const faces = ['html/face1.html', 'html/face2.html', 'html/face3.html', 'html/face4.html'];
+            const containers = ['face1-container', 'face2-container', 'face3-container', 'face4-container'];
             
-            <div class="social-icons">
-                <a href="https://www.linkedin.com/in/jonasgueiros/?locale=en_US" target="_blank"><i class='bx bxl-linkedin' ></i></a>
-                <a href="https://github.com/jonasgueiros" target="_blank"><i class='bx bxl-github' ></i></a>
-            </div>
-
-        </div>
-            <div class="home-img">
-                <img src="image.png" alt="">
-            </div>
-    </section>
-
-    <div class="card-container">
-        <div class="card card-projeto1" onclick="showImages('projeto1')">
-            <div class="card-wrapper">
-                <h2>Veja Mais</h2>
-            </div>
-        </div>
-        <div class="card-text">
-            Uma aplicação em Python que permite aos usuários controlar suas despesas pessoais, registrando informações como descrição, valor, data e categoria de cada gasto. Além disso, a aplicação oferece a funcionalidade de visualização dos gastos por mês, o que facilita o acompanhamento e a análise das finanças em períodos específicos.
-        </div>
-    </div>
-    
-    <!-- Div para exibir as imagens do projeto -->
-    <div id="image-popup" class="image-popup">
-        <div class="popup-content">
-            <span class="close-popup" onclick="closePopup()">&times;</span>
-            <div id="popup-images" class="popup-images"></div>
-            <div class="popup-controls">
-                <button onclick="prevImage()">&#8249; Anterior</button>
-                <button onclick="nextImage()">Próxima &#8250;</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="card-container">
-        <div class="card">
-            <div class="card-wrapper">
-                <h2>Projeto 2</h2>
-                <p>!</p>
-            </div>
-        </div>
-        <div class="card-text">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
-        </div>
-    </div>
-    
-    <div class="card-container">
-        <div class="card">
-            <div class="card-wrapper">
-                <h2>Projeto 3</h2>
-                <p>!</p>
-            </div>
-        </div>
-        <div class="card-text">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Numquam in voluptatum, expedita hic iusto quisquam, dolor aperiam aliquid alias temporibus odio consectetur fugit unde odit voluptatem fugiat error magnam! Deserunt.
-        </div>
-    </div>
-    
-    <div class="outros">
-        <a href="proj.html" class="button-link">Ver Mais Projetos</a>
-    </div>
-    
-</main>
-<script src="script.js"></script>
-<footer class="footer">
-    <a href="https://twitter.com/jonagueiro" target="_blank">Jonas Gueiros</a>        
-</footer>
-
-    <script src="script.js"></script>
+            // Load each face content
+            faces.forEach((faceFile, index) => {
+                fetch(faceFile)
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById(containers[index]).innerHTML = html;
+                    })
+                    .catch(error => console.error(`Error loading ${faceFile}:`, error));
+            });
+        });
+    </script>
 </body>
 </html>

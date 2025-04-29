@@ -1,0 +1,129 @@
+/* Face 1 - Profile Section Styles */
+:root{
+    --bg-color: #080808;
+    --text-color: white;
+    --bg-secondary: #00ff77;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures spacing between elements */
+    height: 100%; /* Makes the section take full height of the face */
+}
+
+.name {
+    font-size: 2.2rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.job-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--bg-secondary);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 15px var(--bg-face1);
+    letter-spacing: 1px;
+}
+
+.job-title span {
+    position: relative;
+}
+
+.job-title span::before{
+    content: "Developer";
+    color: var(--bg-secondary);
+    animation: words 20s infinite;
+}
+
+.job-title span::after{
+    content: "";
+    background-color: var(--bg-face1);
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    border-left: 3px solid var(--bg-face1);
+    right: -8px;
+    animation: cursor 0.6s infinite, typing 20s steps(14) infinite;
+}
+
+@keyframes cursor{
+    to{
+        border-left: 2px solid var(--bg-face1);
+    }
+}
+@keyframes words{
+    0%,
+    20%{
+        content: "Full-Stack";
+    }
+    21%,
+    40%{
+        content: "Back-End";
+    }
+    41%,
+    60%{
+        content: "Software Developer";
+    }
+    61%,
+    80%{
+        content: "Full-Stack";
+    }
+    81%,
+    100%{
+        content: "Software Developer";
+    }
+}
+@keyframes typing{
+    10%,
+    15%,
+    30%,
+    35%,
+    50%,
+    55%,
+    70%,
+    75%,
+    90%,
+    95%{
+        width: 0;
+    }
+    5%,
+    20%,
+    25%,
+    40%,
+    45%,
+    60%,
+    65%,
+    80%,
+    85%{
+        width: calc(100% + 8px);
+    }
+}
+
+.social-links {
+    margin-top: auto; /* Pushes the social links to the bottom */
+    display: flex;
+    gap: 10px; /* Adds spacing between icons */
+    justify-content: center; /* Centers the icons horizontally */
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--bg-secondary);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.social-link:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}

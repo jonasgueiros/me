@@ -26,6 +26,9 @@
     margin-bottom: 0.5rem;
     text-shadow: 0 0 15px var(--bg-face1);
     letter-spacing: 1px;
+    width: 18ch; /* Set a fixed width based on the longest text */
+    overflow: hidden; /* Prevent overflow if the text exceeds the width */
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .job-title span {

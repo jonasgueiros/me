@@ -1,10 +1,29 @@
+.projects-section {
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.projects-section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--text-primary, #ffffff);
+}
+
 .projects-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: relative;
     height: 60vh;
+    width: 80%;
     perspective: 1000px;
+    gap: 2rem; /* Add spacing between objects */
 }
 
 .project-object {
@@ -13,60 +32,139 @@
     height: 5rem;
     cursor: pointer;
     animation: float 4s ease-in-out infinite;
+    margin: 0 1rem; /* Optional: Add horizontal margin for additional spacing */
+}
+
+.project-object:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.project-object:nth-child(3) {
+    animation-delay: 2s;
 }
 
 .project-shape {
     width: 100%;
     height: 100%;
-    background-color: var(--bg-secondary);
-    border-radius: 50%; /* Default to sphere */
+    background-color: var(--bg-secondary, #4e9eff);
+    border-radius: 50%;
     transform-style: preserve-3d;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project-shape.cube {
-    border-radius: 0;
-    transform: rotateX(45deg) rotateY(45deg);
+.project-shape img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
 }
 
-.project-shape.pyramid {
-    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+.project-shape:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
-.project-details {
-    display: none;
-    position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 1rem;
-    border-radius: 8px;
-    color: white;
-    text-align: center;
+.project-modal {
+    display: none; /* Temporarily show the modal */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-modal.show {
+    display: flex; /* Show the modal */
+}
+
+.modal-content {
+    background-color: #222;
     width: 80%;
-    max-width: 400px;
+    max-width: 700px;
+    border-radius: 10px;
+    padding: 2rem;
+    display: flex;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-.project-details h3 {
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--bg-secondary);
+    cursor: pointer;
+    color: white;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    border-radius: 50%;
+    transition: background 0.3s ease;
 }
 
-.project-details p {
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+.modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-.project-details a {
-    font-size: 1rem;
-    color: var(--bg-secondary);
+.modal-left {
+    flex: 1;
+    padding-right: 1.5rem;
+}
+
+.modal-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-right img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-title {
+    font-size: 1.8rem;
+    color: var(--bg-secondary, #4e9eff);
+    margin-bottom: 1rem;
+}
+
+.modal-description {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.modal-tech {
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: #aaa;
+}
+
+.modal-link {
+    display: inline-block;
+    background-color: var(--bg-secondary, #4e9eff);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
     text-decoration: none;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
 }
 
-.project-details a:hover {
-    text-decoration: underline;
+.modal-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 @keyframes float {
@@ -75,5 +173,27 @@
     }
     50% {
         transform: translateY(-1rem);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column-reverse;
+        padding: 1.5rem;
+    }
+    
+    .modal-right {
+        margin-bottom: 1.5rem;
+    }
+    
+    .modal-left {
+        padding-right: 0;
+    }
+    
+    .projects-container {
+        flex-direction: column;
+        height: auto;
+        gap: 2rem;
     }
 }

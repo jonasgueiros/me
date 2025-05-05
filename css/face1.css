@@ -10,25 +10,131 @@
     flex-direction: column;
     justify-content: space-between; /* Ensures spacing between elements */
     height: 100%; /* Makes the section take full height of the face */
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-content {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* Optional: limit maximum width */
+}
+
+/* Left section - 60% width */
+.profile-left {
+    flex: 2; /* 60% of the available space */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Right section - 40% width */
+.profile-right {
+    flex: 4;
+    display: flex;
+    flex-direction: column; /* Add this to stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: flex-start; /* Align to the left */
+    padding: 20px;
+}
+
+/* Avatar styling */
+.avatar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+}
+
+.avatar-circle {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #00ff77 0%, #208066 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* Make the entire avatar a clickable link */
+.avatar-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.avatar-circle:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Style the GitHub icon in the avatar */
+.avatar-circle svg {
+    width: 100px;
+    height: 100px;
+    color: white;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
+}
+
+.avatar-circle:hover svg {
+    transform: scale(1.1);
+}
+
+.avatar-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(0, 255, 119, 0.4);
+    z-index: 1;
+    animation: pulse 4s infinite;
+    animation-delay: 0.5s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
 }
 
 .name {
-    font-size: 2.2rem;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 3rem;
-    font-weight: 300;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #00ff77;
+    width: 100%; /* Ensure full width */
 }
 
 .job-title {
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--bg-secondary);
-    margin-bottom: 0.5rem;
-    text-shadow: 0 0 15px var(--bg-face1);
-    letter-spacing: 1px;
-    width: 18ch; /* Set a fixed width based on the longest text */
-    overflow: hidden; /* Prevent overflow if the text exceeds the width */
-    white-space: nowrap; /* Prevent text wrapping */
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    color: white;
+    width: 100%; /* Ensure full width */
 }
 
 .job-title span {
@@ -68,11 +174,11 @@
     }
     41%,
     60%{
-        content: "Software Developer";
+        content: "Front-End";
     }
     61%,
     80%{
-        content: "Full-Stack";
+        content: "Web Developer";
     }
     81%,
     100%{
@@ -105,28 +211,46 @@
     }
 }
 
+/* Update tagline styles */
+.tagline {
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 50px; /* Increase space between job title and tagline (was -20px) */
+    margin-bottom: 30px;
+    position: relative;
+    padding-left: 20px;
+    font-weight: 300; /* Lighter weight for elegance */
+}
+
+.tagline::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 15px;
+    height: 1px;
+    background-color: var(--bg-secondary);
+}
+
 .social-links {
-    margin-top: auto; /* Pushes the social links to the bottom */
-    display: flex;
-    gap: 10px; /* Adds spacing between icons */
-    justify-content: center; /* Centers the icons horizontally */
+    display: none;
 }
 
 .social-link {
+    color: white;
+    transition: color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    background-color: var(--bg-secondary);
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    color: white;
-    text-decoration: none;
-    font-size: 1.5rem;
 }
 
 .social-link:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
+    color: var(--bg-secondary);
+}
+
+.social-link svg {
+    height: 24px;
+    width: 24px;
+    fill: currentColor; /* Ensure the SVG color changes with the parent */
 }

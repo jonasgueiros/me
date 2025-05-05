@@ -6,8 +6,7 @@
     <title>Jonas Gueiros - Portfolio Cube</title>
     <!-- Main CSS file that imports all individual face CSS files -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-code-slash' viewBox='0 0 16 16'><path d='M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0'/></svg>">
-</head>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2300ff77' class='bi bi-code-slash' viewBox='0 0 16 16'><path d='M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0m6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0'/></svg>"></head>
 <body>
     <div class="viewport">
         <div class="cube-container">
@@ -41,10 +40,76 @@
                     .then(response => response.text())
                     .then(html => {
                         document.getElementById(containers[index]).innerHTML = html;
+                        
+                        // Initialize the projects functionality after face2.html is loaded
+                        if(faceFile === 'html/face2.html') {
+                            initializeProjects();
+                        }
                     })
                     .catch(error => console.error(`Error loading ${faceFile}:`, error));
             });
         });
+
+        function initializeProjects() {
+            const projectImage = document.getElementById('project-image');
+            const projectTitle = document.getElementById('project-title');
+            const projectDescription = document.getElementById('project-description');
+            const projectTech = document.getElementById('project-tech');
+            const projectLink = document.getElementById('project-link');
+            
+            if (!projectImage || !projectTitle || !projectDescription || !projectTech || !projectLink) {
+                console.error("Missing elements in the DOM:", {
+                    projectImage,
+                    projectTitle,
+                    projectDescription,
+                    projectTech,
+                    projectLink
+                });
+                return;
+            }
+            
+            const projects = [
+                {
+                    title: "Project 1",
+                    description: "This is project 1 description.",
+                    tech: "HTML, CSS, JavaScript",
+                    image: "../img/project1.png",
+                    link: "#project1"
+                },
+                {
+                    title: "Project 2",
+                    description: "This is project 2 description.",
+                    tech: "React, Node.js",
+                    image: "../img/project2.jpg",
+                    link: "#project2"
+                },
+                {
+                    title: "Project 3",
+                    description: "This is project 3 description.",
+                    tech: "Python, Flask",
+                    image: "../img/project3.png",
+                    link: "#project3"
+                }
+            ];
+
+            let currentProjectIndex = 0;
+
+            function updateProjectDisplay() {
+                const project = projects[currentProjectIndex];
+                projectTitle.textContent = project.title;
+                projectDescription.textContent = project.description;
+                projectTech.textContent = project.tech;
+                projectImage.src = project.image;
+                projectLink.href = project.link;
+            }
+
+            setInterval(() => {
+                currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+                updateProjectDisplay();
+            }, 30000); // 30 seconds in milliseconds
+
+            updateProjectDisplay();
+        }
     </script>
 </body>
 </html>

@@ -1,199 +1,91 @@
 .projects-section {
-    padding: 2rem;
     height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
+    padding: 20px;
 }
 
 .projects-section h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--text-primary, #ffffff);
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: white;
 }
 
-.projects-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: relative;
-    height: 60vh;
-    width: 80%;
-    perspective: 1000px;
-    gap: 2rem; /* Add spacing between objects */
-}
-
-.project-object {
-    position: relative;
-    width: 5rem;
-    height: 5rem;
-    cursor: pointer;
-    animation: float 4s ease-in-out infinite;
-    margin: 0 1rem; /* Optional: Add horizontal margin for additional spacing */
-}
-
-.project-object:nth-child(2) {
-    animation-delay: 1s;
-}
-
-.project-object:nth-child(3) {
-    animation-delay: 2s;
-}
-
-.project-shape {
-    width: 100%;
-    height: 100%;
-    background-color: var(--bg-secondary, #4e9eff);
-    border-radius: 50%;
-    transform-style: preserve-3d;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-shape img {
-    width: 70%;
-    height: 70%;
-    object-fit: cover;
-}
-
-.project-shape:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
-}
-
-.project-modal {
-    display: none; /* Temporarily show the modal */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
-}
-
-.project-modal.show {
-    display: flex; /* Show the modal */
-}
-
-.modal-content {
-    background-color: #222;
-    width: 80%;
-    max-width: 700px;
+.project-window {
+    width: 99%; 
+    height: 99%;
+    background-color: #3a7054;
     border-radius: 10px;
-    padding: 2rem;
+    overflow: hidden;
+    padding: 20px;
     display: flex;
-    position: relative;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    flex-direction: column;
 }
 
-.modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: white;
-    width: 24px;
-    height: 24px;
-    text-align: center;
-    line-height: 24px;
-    border-radius: 50%;
-    transition: background 0.3s ease;
-}
-
-.modal-close:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.modal-left {
-    flex: 1;
-    padding-right: 1.5rem;
-}
-
-.modal-right {
-    flex: 1;
+.project-content {
     display: flex;
-    justify-content: center;
+    flex: 1;
+    gap: 20px;
+}
+
+.project-left {
+    flex: 2;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
-.modal-right img {
+.project-left img {
     max-width: 100%;
-    max-height: 300px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-.modal-title {
-    font-size: 1.8rem;
-    color: var(--bg-secondary, #4e9eff);
-    margin-bottom: 1rem;
+.project-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.modal-description {
-    margin-bottom: 1rem;
-    line-height: 1.5;
+.project-right h2 {
+    margin-bottom: 15px;
+    font-size: 2rem;
 }
 
-.modal-tech {
-    margin-bottom: 1rem;
-    font-style: italic;
-    color: #aaa;
+.project-right p {
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-.modal-link {
+.tech-container {
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.tech-container h3 {
+    margin-bottom: 5px;
+    color: #00ff77;
+    font-size: 1.2rem;
+}
+
+.view-button {
     display: inline-block;
-    background-color: var(--bg-secondary, #4e9eff);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: #00ff77;
+    color: #080808;
     text-decoration: none;
-    margin-top: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
     transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
-.modal-link:hover {
+.view-button:hover {
+    background-color: #00cc5e;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-1rem);
-    }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .modal-content {
-        flex-direction: column-reverse;
-        padding: 1.5rem;
-    }
-    
-    .modal-right {
-        margin-bottom: 1.5rem;
-    }
-    
-    .modal-left {
-        padding-right: 0;
-    }
-    
-    .projects-container {
-        flex-direction: column;
-        height: auto;
-        gap: 2rem;
-    }
 }

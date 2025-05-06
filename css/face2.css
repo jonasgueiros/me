@@ -53,13 +53,16 @@
 }
 
 .project-right h2 {
-    margin-bottom: 15px;
+    margin-bottom: 25px; /* Increased from 15px to 25px */
     font-size: 2rem;
+    color: #00ff77; /* Changed from inheriting color to your theme color */
+    text-shadow: 0 0 10px rgba(0, 255, 119, 0.3); /* Optional: adds a subtle glow */
 }
 
 .project-right p {
     margin-bottom: 20px;
     line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9); /* Ensuring good contrast with the background */
 }
 
 .tech-container {

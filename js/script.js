@@ -79,204 +79,419 @@ function applyMobileAdjustments() {
     const mobileStyles = `
         /* Global font size adjustments for mobile - applies to all faces */
         .mobile-view {
-            font-size: 65%; /* Further reduced global font size from 75% to 65% */
+            font-size: 65%;
         }
         
         /* Global text adjustments for all faces */
         .mobile-view .face {
-            padding: 8px !important; /* Reduced from 10px */
+            padding: 8px !important;
         }
         
-        .mobile-view h1 {
-            font-size: 1.4rem !important; /* Reduced from 1.6rem */
-            margin-bottom: 6px !important; /* Reduced from 8px */
+        /* Cube specific adjustments for mobile */
+        .mobile-view .viewport {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
         
-        .mobile-view h2 {
-            font-size: 1.2rem !important; /* Reduced from 1.3rem */
-            margin-bottom: 6px !important; /* Reduced from 8px */
-        }
-        
-        .mobile-view h3 {
-            font-size: 0.95rem !important; /* Reduced from 1.1rem */
-            margin-bottom: 5px !important; /* Reduced from 6px */
-        }
-        
-        .mobile-view p, .mobile-view li {
-            font-size: 0.7rem !important; /* Reduced from 0.8rem */
-            line-height: 1.2 !important; /* Reduced from 1.3 */
-            margin-bottom: 6px !important; /* Reduced from 8px */
-        }
-        
-        .mobile-view a, .mobile-view button {
-            font-size: 0.75rem !important; /* Reduced from 0.85rem */
-        }
-        
-        /* Cube and navigation adjustments */
         .mobile-view .cube-container {
-            perspective: 800px;
+            perspective: 1000px;
+            height: 100vh;
+            width: 100vw;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 15px; /* Add padding around the container */
         }
         
         .mobile-view .cube {
             transform-style: preserve-3d;
+            position: absolute;
+            transform: rotateX(0deg);
+            transform-origin: center center;
         }
         
+        .mobile-view .face {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            backface-visibility: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* No hardcoded face positions here - they'll be set by updateFacePositions */
+        
+        /* Adjust nav indicator position for the smaller cube */
         .mobile-view .nav-indicator {
-            bottom: 12px; /* Reduced from 15px */
+            position: fixed;
+            bottom: 15px;
+            z-index: 1000;
         }
         
-        .mobile-view .nav-dot {
-            width: 14px; /* Reduced from 16px */
-            height: 14px; /* Reduced from 16px */
-            margin: 0 6px; /* Reduced from 8px */
-        }
-        
-        /* Face1 mobile styles - Smaller avatar */
-        .mobile-view .profile-content {
-            flex-direction: column !important;
-            padding: 10px !important; /* Reduced from 12px */
-            max-width: 98% !important; /* Increased from 95% to use more screen space */
-        }
-        
-        .mobile-view .profile-left {
-            margin-bottom: 12px; /* Reduced from 15px */
-            width: 80px !important; /* Significantly reduced size */
-            height: 80px !important; /* Significantly reduced size */
-            max-width: 80px !important; /* Enforce max width */
-            margin: 0 auto 10px auto !important; /* Center horizontally with bottom margin */
-        }
-        
-        .mobile-view .profile-left img {
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            border-radius: 50% !important; /* Make it round */
-            border: 2px solid #00ff77 !important; /* Add a border with your theme color */
-        }
-        
-        .mobile-view .profile-right {
-            text-align: center;
-        }
-        
-        .mobile-view .name {
-            font-size: 1.4rem !important; /* Reduced from 1.6rem */
-            margin-bottom: 6px !important; /* Reduced from 8px */
-        }
-        
-        .mobile-view .job-title {
-            font-size: 0.85rem !important; /* Reduced from 0.95rem */
-        }
-        
-        .mobile-view .tagline {
-            font-size: 0.65rem !important; /* Reduced from 0.75rem */
-            margin-top: 12px !important; /* Reduced from 15px */
-        }
-        
-        /* Face2 mobile styles - Image on top layout */
-        .mobile-view .project-content {
-            flex-direction: column !important;
-            padding: 6px !important;
-        }
-        
-        .mobile-view .project-left {
-            width: 100% !important;
-            max-height: 150px !important; /* Slightly increased height for better image visibility */
-            order: 1 !important; /* This puts the image on top */
-            margin-bottom: 10px !important; /* Space between image and text */
-        }
-        
-        .mobile-view .project-right {
-            width: 100% !important;
-            padding: 6px !important;
-            order: 2 !important; /* This puts the text below */
-        }
-        
-        .mobile-view .project-right h2 {
-            font-size: 1.1rem !important;
-            margin-bottom: 6px !important;
-            text-align: center !important; /* Center the title for better mobile layout */
-        }
-        
-        .mobile-view .project-right p {
-            font-size: 0.65rem !important;
-            line-height: 1.15 !important;
-            margin-bottom: 6px !important;
-        }
-        
-        .mobile-view .project-right .tech-container h3 {
-            font-size: 0.75rem !important;
-        }
-        
-        .mobile-view .project-right .tech-container p {
-            font-size: 0.6rem !important;
-        }
-        
-        .mobile-view .view-button {
-            padding: 5px 10px !important;
-            font-size: 0.7rem !important;
-            margin: 0 auto !important; /* Center the button */
-            display: block !important;
-        }
-        
-        /* Face3 mobile styles - Technologies/Skills */
-        .mobile-view .skills-section h2 {
-            font-size: 1rem !important; /* Reduced from 1.2rem */
-        }
-        
-        .mobile-view .skills-section .skill-category {
-            padding: 4px !important; /* Reduced from 8px */
-            margin-bottom: 4px !important; /* Reduced from 8px */
-        }
-        
-        .mobile-view .skill-category h3 {
-            font-size: 0.6rem !important; /* Reduced from 0.9rem */
-            margin-bottom: 2px !important; /* Reduced from 5px */
-        }
-        
-        .mobile-view .skill-list li {
-            font-size: 0.55rem !important; /* Reduced from 0.75rem */
-            padding: 1px 3px !important; /* Reduced from 3px 6px */
-            margin: 1px !important; /* Reduced from 2px */
-        }
-        
-        /* Face4 mobile styles - Contact/About */
-        .mobile-view .contact-section h2 {
-            font-size: 1.1rem !important; /* Reduced from 1.2rem */
-        }
-        
-        .mobile-view .contact-form label {
-            font-size: 0.65rem !important; /* Reduced from 0.75rem */
-        }
-        
-        .mobile-view .contact-form input,
-        .mobile-view .contact-form textarea {
-            padding: 5px 6px !important; /* Reduced from 6px 8px */
-            font-size: 0.65rem !important; /* Reduced from 0.75rem */
-            margin-bottom: 6px !important; /* Reduced from 8px */
-        }
-        
-        .mobile-view .contact-form button {
-            padding: 5px 10px !important; /* Reduced from 6px 12px */
-            font-size: 0.7rem !important; /* Reduced from 0.8rem */
-        }
-        
-        /* Better touch targets for mobile - keeping minimum size for usability */
-        .mobile-view a, 
-        .mobile-view button,
-        .mobile-view input[type="submit"] {
-            min-height: 30px; /* Reduced from 32px but still usable */
-            min-width: 30px; /* Reduced from 32px but still usable */
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
+        /* Rest of your existing mobile styles... */
     `;
     
     // Add styles to document
     const styleEl = document.createElement('style');
-    styleEl.textContent = mobileStyles;
+    styleEl.textContent = mobileStyles + originalMobileStyles;
     document.head.appendChild(styleEl);
+    
+    // Modify the adjustCubeForOrientation function for the smaller cube
+    window.addEventListener('resize', function() {
+        adjustCubeForOrientation();
+    });
+    
+    // Initial adjustment
+    adjustCubeForOrientation();
 }
+
+// Function to adjust cube for different orientations with EVEN MORE space from top
+function adjustCubeForOrientation() {
+    const isPortrait = window.innerHeight > window.innerWidth;
+    const cube = document.getElementById('cube');
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    
+    if (!cube) return;
+    
+    if (isPortrait) {
+        // Portrait mode - use smaller dimensions
+        const baseHeight = 650;
+        const baseWidth = 300;
+        
+        if (screenHeight < baseHeight || screenWidth < baseWidth) {
+            // Determine scaling factor (use the more constraining dimension)
+            const heightRatio = (screenHeight - 140) / baseHeight; // Increased from 100px to 140px
+            const widthRatio = (screenWidth - 60) / baseWidth;
+            const scaleFactor = Math.min(heightRatio, widthRatio) * 0.95;
+            
+            const scaledHeight = Math.floor(baseHeight * scaleFactor);
+            const scaledWidth = Math.floor(baseWidth * scaleFactor);
+            
+            cube.style.height = scaledHeight + 'px';
+            cube.style.width = scaledWidth + 'px';
+            
+            // Adjust positioning with SUBSTANTIALLY MORE SPACE FROM TOP
+            const leftMargin = Math.max(30, (screenWidth - scaledWidth) / 2);
+            const topMargin = Math.max(90, (screenHeight - scaledHeight) / 3); // Increased from 60px to 90px minimum
+            
+            cube.style.left = leftMargin + 'px';
+            cube.style.top = topMargin + 'px';
+            
+            // Update face positioning based on scaled height
+            const halfHeight = scaledHeight / 2;
+            updateFacePositions(halfHeight);
+        } else {
+            // Use smaller base dimensions with margins
+            cube.style.height = baseHeight + 'px';
+            cube.style.width = baseWidth + 'px';
+            
+            // Adjust positioning with SUBSTANTIALLY MORE SPACE FROM TOP
+            const leftMargin = Math.max(30, (screenWidth - baseWidth) / 2);
+            const topMargin = Math.max(90, (screenHeight - baseHeight) / 3); // Increased from 60px to 90px minimum
+            
+            cube.style.left = leftMargin + 'px';
+            cube.style.top = topMargin + 'px';
+            
+            updateFacePositions(baseHeight / 2);
+        }
+    } else {
+        // Landscape mode - invert dimensions and use smaller size
+        const baseHeight = 300;
+        const baseWidth = 650;
+        
+        if (screenWidth < baseWidth || screenHeight < baseHeight) {
+            // Scale proportionally
+            const heightRatio = (screenHeight - 100) / baseHeight; // Increased from 80px to 100px
+            const widthRatio = (screenWidth - 60) / baseWidth;
+            const scaleFactor = Math.min(heightRatio, widthRatio) * 0.95;
+            
+            const scaledHeight = Math.floor(baseHeight * scaleFactor);
+            const scaledWidth = Math.floor(baseWidth * scaleFactor);
+            
+            cube.style.height = scaledHeight + 'px';
+            cube.style.width = scaledWidth + 'px';
+            
+            // Adjust positioning with MORE SPACE FROM TOP
+            const leftMargin = Math.max(30, (screenWidth - scaledWidth) / 2);
+            const topMargin = Math.max(70, (screenHeight - scaledHeight) / 2.5); // Increased from 50px to 70px
+            
+            cube.style.left = leftMargin + 'px';
+            cube.style.top = topMargin + 'px';
+            
+            const halfHeight = scaledHeight / 2;
+            updateFacePositions(halfHeight);
+        } else {
+            // Exact inverted dimensions with smaller size
+            cube.style.height = baseHeight + 'px';
+            cube.style.width = baseWidth + 'px';
+            
+            // Center with margins and MORE SPACE FROM TOP
+            const leftMargin = Math.max(30, (screenWidth - baseWidth) / 2);
+            const topMargin = Math.max(70, (screenHeight - baseHeight) / 2.5); // Increased from 50px to 70px
+            
+            cube.style.left = leftMargin + 'px';
+            cube.style.top = topMargin + 'px';
+            
+            updateFacePositions(baseHeight / 2);
+        }
+    }
+}
+
+// Helper function to update face positions based on cube height
+function updateFacePositions(halfHeight) {
+    // For face-1 (front face)
+    document.querySelectorAll('.face-1').forEach(face => {
+        face.style.transform = `translateZ(${halfHeight}px)`;
+    });
+    
+    // For face-2 (top face)
+    document.querySelectorAll('.face-2').forEach(face => {
+        face.style.transform = `rotateX(90deg) translateZ(${halfHeight}px)`;
+    });
+    
+    // For face-3 (back face)
+    document.querySelectorAll('.face-3').forEach(face => {
+        face.style.transform = `rotateX(180deg) translateZ(${halfHeight}px)`;
+    });
+    
+    // For face-4 (bottom face)
+    document.querySelectorAll('.face-4').forEach(face => {
+        face.style.transform = `rotateX(270deg) translateZ(${halfHeight}px)`;
+    });
+}
+
+// Store original mobile styles for face-specific styling
+const originalMobileStyles = `
+    /* Face1 mobile styles - Smaller avatar */
+    .mobile-view .profile-content {
+        flex-direction: column !important;
+        padding: 10px !important;
+        max-width: 98% !important;
+    }
+    
+    .mobile-view .profile-left {
+        margin-bottom: 12px;
+        width: 80px !important;
+        height: 80px !important;
+        max-width: 80px !important;
+        margin: 0 auto 10px auto !important;
+    }
+    
+    .mobile-view .profile-left img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        border-radius: 50% !important;
+        border: 2px solid #00ff77 !important;
+    }
+    
+    .mobile-view .profile-right {
+        text-align: center;
+    }
+    
+    .mobile-view .name {
+        font-size: 1.4rem !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .mobile-view .job-title {
+        font-size: 0.85rem !important;
+    }
+    
+    .mobile-view .tagline {
+        font-size: 0.65rem !important;
+        margin-top: 12px !important;
+    }
+    
+    /* Face2 mobile styles - Image on top layout */
+    .mobile-view .project-content {
+        flex-direction: column !important;
+        padding: 6px !important;
+    }
+    
+    .mobile-view .project-left {
+        width: 100% !important;
+        max-height: 150px !important;
+        order: 1 !important;
+        margin-bottom: 10px !important;
+    }
+    
+    .mobile-view .project-right {
+        width: 100% !important;
+        padding: 6px !important;
+        order: 2 !important;
+    }
+    
+    .mobile-view .project-right h2 {
+        font-size: 1.1rem !important;
+        margin-bottom: 6px !important;
+        text-align: center !important;
+    }
+    
+    .mobile-view .project-right p {
+        font-size: 0.65rem !important;
+        line-height: 1.15 !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .mobile-view .project-right .tech-container h3 {
+        font-size: 0.75rem !important;
+    }
+    
+    .mobile-view .project-right .tech-container p {
+        font-size: 0.6rem !important;
+    }
+    
+    .mobile-view .view-button {
+        padding: 5px 10px !important;
+        font-size: 0.7rem !important;
+        margin: 0 auto !important;
+        display: block !important;
+    }
+    
+    /* Face3 mobile styles - Technologies/Skills */
+    .mobile-view .skills-section h2 {
+        font-size: 1rem !important;
+    }
+    
+    .mobile-view .skills-section .skill-category {
+        padding: 4px !important;
+        margin-bottom: 4px !important;
+    }
+    
+    .mobile-view .skill-category h3 {
+        font-size: 0.6rem !important;
+        margin-bottom: 2px !important;
+    }
+    
+    .mobile-view .skill-list li {
+        font-size: 0.55rem !important;
+        padding: 1px 3px !important;
+        margin: 1px !important;
+    }
+    
+    /* Face4 mobile styles - Contact/About */
+    .mobile-view .contact-section h2 {
+        font-size: 1.1rem !important;
+    }
+    
+    .mobile-view .contact-form label {
+        font-size: 0.65rem !important;
+    }
+    
+    .mobile-view .contact-form input,
+    .mobile-view .contact-form textarea {
+        padding: 5px 6px !important;
+        font-size: 0.65rem !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .mobile-view .contact-form button {
+        padding: 5px 10px !important;
+        font-size: 0.7rem !important;
+    }
+    
+    /* Better touch targets for mobile */
+    .mobile-view a, 
+    .mobile-view button,
+    .mobile-view input[type="submit"] {
+        min-height: 30px;
+        min-width: 30px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Face3 mobile styles - Technologies/Skills - EVEN SMALLER TEXT */
+    .mobile-view .skills-section h2 {
+        font-size: 0.85rem !important; /* Reduced from 1rem */
+        margin-bottom: 5px !important;
+    }
+    
+    .mobile-view .skills-section .skill-category {
+        padding: 3px !important; /* Reduced from 4px */
+        margin-bottom: 3px !important; /* Reduced from 4px */
+    }
+    
+    .mobile-view .skill-category h3 {
+        font-size: 0.55rem !important; /* Reduced from 0.6rem */
+        margin-bottom: 1px !important; /* Reduced from 2px */
+    }
+    
+    .mobile-view .skill-list li {
+        font-size: 0.45rem !important; /* Reduced from 0.55rem */
+        padding: 1px 2px !important; /* Reduced horizontal padding */
+        margin: 1px !important;
+        border-radius: 2px !important; /* Smaller border radius */
+    }
+    
+    /* Add more condensed spacing for skill categories */
+    .mobile-view .skills-container {
+        gap: 3px !important;
+    }
+    
+    /* Face4 mobile styles - Contact/About - EVEN SMALLER TEXT */
+    .mobile-view .contact-section h2 {
+        font-size: 0.9rem !important; /* Reduced from 1.1rem */
+        margin-bottom: 5px !important;
+    }
+    
+    .mobile-view .contact-form label {
+        font-size: 0.55rem !important; /* Reduced from 0.65rem */
+        margin-bottom: 2px !important;
+    }
+    
+    .mobile-view .contact-form input,
+    .mobile-view .contact-form textarea {
+        padding: 4px 5px !important; /* Reduced from 5px 6px */
+        font-size: 0.55rem !important; /* Reduced from 0.65rem */
+        margin-bottom: 5px !important; /* Reduced from 6px */
+        min-height: 22px !important; /* Shorter input fields */
+    }
+    
+    .mobile-view .contact-form textarea {
+        min-height: 40px !important; /* Shorter textarea */
+    }
+    
+    .mobile-view .contact-form button {
+        padding: 4px 8px !important; /* Reduced from 5px 10px */
+        font-size: 0.6rem !important; /* Reduced from 0.7rem */
+        min-height: 26px !important;
+    }
+    
+    .mobile-view .contact-info p, 
+    .mobile-view .contact-info a {
+        font-size: 0.55rem !important; /* Reduced from normal size */
+        margin-bottom: 3px !important;
+    }
+    
+    .mobile-view .social-links a {
+        padding: 4px !important;
+        margin: 0 3px !important;
+    }
+    
+    .mobile-view .social-links svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    
+    /* Better touch targets for mobile but smaller than before */
+    .mobile-view a, 
+    .mobile-view button,
+    .mobile-view input[type="submit"] {
+        min-height: 26px; /* Reduced from 30px */
+        min-width: 26px; /* Reduced from 30px */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+`;
 
 // Add swipe gesture support for mobile devices
 function addSwipeSupport() {
@@ -342,13 +557,6 @@ window.initializeProjects = function() {
     
     const isMobile = document.body.classList.contains('mobile-view');
     
-    // Shortened descriptions for mobile
-    const mobileDescriptions = {
-        "Expense Manager": "Expense tracking app with SQLite database and data visualization.",
-        "Medical Access Portal": "Healthcare platform with dual role-based authentication system.",
-        "Task Management API": "RESTful API with JWT auth and task management features."
-    };
-    
     const projects = [
         {
             title: "Expense Manager",
@@ -378,14 +586,7 @@ window.initializeProjects = function() {
     function updateProjectDisplay() {
         const project = projects[currentProjectIndex];
         projectTitle.textContent = project.title;
-        
-        // Use shorter description on mobile
-        if (isMobile && mobileDescriptions[project.title]) {
-            projectDescription.textContent = mobileDescriptions[project.title];
-        } else {
-            projectDescription.textContent = project.description;
-        }
-        
+        projectDescription.textContent = project.description; // Always use full description
         projectTech.textContent = project.tech;
         projectImage.src = project.image;
         projectLink.href = project.link;

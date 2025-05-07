@@ -49,67 +49,6 @@
                     .catch(error => console.error(`Error loading ${faceFile}:`, error));
             });
         });
-
-        function initializeProjects() {
-            const projectImage = document.getElementById('project-image');
-            const projectTitle = document.getElementById('project-title');
-            const projectDescription = document.getElementById('project-description');
-            const projectTech = document.getElementById('project-tech');
-            const projectLink = document.getElementById('project-link');
-            
-            if (!projectImage || !projectTitle || !projectDescription || !projectTech || !projectLink) {
-                console.error("Missing elements in the DOM:", {
-                    projectImage,
-                    projectTitle,
-                    projectDescription,
-                    projectTech,
-                    projectLink
-                });
-                return;
-            }
-            
-            const projects = [
-                {
-                    title: "Expense Manager",
-                    description: "A comprehensive expense tracking solution featuring detailed entry management, SQLite-based database with custom table creation, and robust data visualization with statistical analysis and graphical expense summaries.",
-                    tech: "Python, Flet, SQLite, Matplotlib",
-                    image: "img/project1.png",
-                    link: "https://github.com/jonasgueiros/expenses"
-                },
-                {
-                    title: "Portfolio Website",
-                    description: "Modern 3D interactive portfolio built with vanilla JavaScript and CSS, featuring a rotating cube interface with custom animations and responsive design for all device types.",
-                    tech: "HTML5, CSS3, JavaScript",
-                    image: "img/project2-1.jpg",
-                    link: "https://github.com/jonasgueiros/me"
-                },
-                {
-                    title: "Task Management API",
-                    description: "RESTful API for task management with user authentication, task assignment, filtering, and sorting capabilities. Implements JWT authentication and comprehensive documentation.",
-                    tech: "Node.js, Express.js, MongoDB",
-                    image: "project3-1.jpg",
-                    link: "https://github.com/jonasgueiros/task-api"
-                }
-            ];
-
-            let currentProjectIndex = 0;
-
-            function updateProjectDisplay() {
-                const project = projects[currentProjectIndex];
-                projectTitle.textContent = project.title;
-                projectDescription.textContent = project.description;
-                projectTech.textContent = project.tech;
-                projectImage.src = project.image;
-                projectLink.href = project.link;
-            }
-
-            setInterval(() => {
-                currentProjectIndex = (currentProjectIndex + 1) % projects.length;
-                updateProjectDisplay();
-            }, 30000); // 30 seconds in milliseconds
-
-            updateProjectDisplay();
-        }
     </script>
 </body>
 </html>

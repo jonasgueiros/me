@@ -117,11 +117,11 @@ function initializeProjects(projectImage, projectTitle, projectDescription, proj
             link: "https://github.com/jonasgueiros/clinica"
         },
         {
-            title: "Task Management API",
-            description: "RESTful API for task management with user authentication, task assignment, filtering, and sorting capabilities. Implements JWT authentication and comprehensive documentation.",
-            tech: "Node.js, Express.js, MongoDB",
-            image: "../img/project3-1.jpg",
-            link: "https://github.com/jonasgueiros/task-api"
+            title: "End-to-End Audio Router",
+            description: "This application routes, processes and renders audio end-to-end. It discovers and manages physical and virtual audio devices, routes audio between them, and applies DSP effects (including a native Rust DSP module) for low-latency processing. The app provides audio-processing utilities (filters, equalizer, mixers), a graphical UI for configuring devices and effects, and notifications for device events. It also includes tests and configuration handling so users can save and load audio setups.",
+            tech: "Rust, C++, JavaScript, Web Audio API, WASM",
+            image: "../img/sound.png",
+            link: "https://github.com/jonasgueiros/audio-router"
         }
     ];
 
@@ -132,7 +132,7 @@ function initializeProjects(projectImage, projectTitle, projectDescription, proj
     const mobileDescriptions = {
         "Expense Manager": "Expense tracking app with SQLite database and data visualization.",
         "Medical Access Portal": "Healthcare platform with dual role-based authentication system.",
-        "Task Management API": "RESTful API with JWT auth and task management features."
+        "End-to-End Audio Router": "Audio routing and processing application with Rust and Web Audio API."
     };
 
     // Function to update project display

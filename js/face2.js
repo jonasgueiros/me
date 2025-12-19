@@ -89,7 +89,7 @@ const observer = new MutationObserver((mutations) => {
             // If all needed elements are found, initialize the projects
             if (projectImage && projectTitle && projectDescription && projectTech && projectLink) {
                 observer.disconnect(); // Stop observing once elements are found
-                initializeProjects(projectImage, projectTitle, projectDescription, projectTech, projectLink);
+                initializeProjects();
                 
                 // Adjust layout for mobile
                 adjustProjectLayoutForMobile();
@@ -100,7 +100,14 @@ const observer = new MutationObserver((mutations) => {
 
 observer.observe(document.body, { childList: true, subtree: true });
 
-function initializeProjects(projectImage, projectTitle, projectDescription, projectTech, projectLink) {
+function initializeProjects() {
+    // Get the project elements
+    const projectImage = document.getElementById('project-image');
+    const projectTitle = document.getElementById('project-title');
+    const projectDescription = document.getElementById('project-description');
+    const projectTech = document.getElementById('project-tech');
+    const projectLink = document.getElementById('project-link');
+
     const projects = [
         {
             title: "Expense Manager",
@@ -110,18 +117,18 @@ function initializeProjects(projectImage, projectTitle, projectDescription, proj
             link: "https://github.com/jonasgueiros/expenses"
         },
         {
+            title: "End-to-End Audio Router",
+            description: "This application routes, processes and renders audio end-to-end. It discovers and manages physical and virtual audio devices, routes audio between them, and applies DSP effects (including a native Rust DSP module) for low-latency processing. The app provides audio-processing utilities (filters, equalizer, mixers), a graphical UI for configuring devices and effects, and notifications for device events. It also includes tests and configuration handling so users can save and load audio setups.",
+            tech: "Rust, C++, JavaScript, Web Audio API, WASM",
+            image: "../img/sound.png",
+            link: "https://github.com/jonasgueiros/sound"
+        },
+        {
             title: "Medical Access Portal",
             description: "Secure healthcare platform with dual authentication system for patients and doctors, separate access points with role-specific redirects, and robust security features including PHP's password_verify function for credential validation.",
             tech: "PHP, MySQL, JavaScript, HTML/CSS",
             image: "img/project2-1.jpg",
             link: "https://github.com/jonasgueiros/clinica"
-        },
-        {
-            title: "End-to-End Audio Router",
-            description: "This application routes, processes and renders audio end-to-end. It discovers and manages physical and virtual audio devices, routes audio between them, and applies DSP effects (including a native Rust DSP module) for low-latency processing. The app provides audio-processing utilities (filters, equalizer, mixers), a graphical UI for configuring devices and effects, and notifications for device events. It also includes tests and configuration handling so users can save and load audio setups.",
-            tech: "Rust, C++, JavaScript, Web Audio API, WASM",
-            image: "../img/sound.png",
-            link: "https://github.com/jonasgueiros/audio-router"
         }
     ];
 
@@ -155,9 +162,8 @@ function initializeProjects(projectImage, projectTitle, projectDescription, proj
     }
 
     // On mobile, change projects more frequently
-    const interval = isMobile ? 20000 : 30000;
+    const interval = isMobile ? 20000 : 15000;
     
-    // Change project every 30 seconds (or 20 on mobile)
     setInterval(() => {
         currentProjectIndex = (currentProjectIndex + 1) % projects.length;
         updateProjectDisplay();

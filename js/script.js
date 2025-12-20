@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const cube = document.getElementById('cube');
     const navDots = document.querySelectorAll('.nav-dot');
-    const totalSections = 4;
+    const totalSections = 3;
     const sectionHeight = document.body.scrollHeight / totalSections;
     let currentSection = 0;
     
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const documentHeight = document.body.scrollHeight - window.innerHeight;
         const scrollPercentage = scrollPosition / documentHeight;
         
-        // Calculate rotation angle (90 degrees per section)
+        // Calculate rotation angle (120 degrees per section for 3 faces)
         const rotationAngle = scrollPercentage * 360;
         
         // Apply rotation while keeping faces centered
@@ -245,24 +245,21 @@ function adjustCubeForOrientation() {
 
 // Helper function to update face positions based on cube height
 function updateFacePositions(halfHeight) {
-    // For face-1 (front face)
+    // For 3 faces (face-1, face-2, face-4): 120 degrees apart
+    
+    // For face-1 (front face at 0 degrees)
     document.querySelectorAll('.face-1').forEach(face => {
-        face.style.transform = `translateZ(${halfHeight}px)`;
+        face.style.transform = `rotateX(0deg) translateZ(${halfHeight}px)`;
     });
     
-    // For face-2 (top face)
+    // For face-2 (top face at 120 degrees)
     document.querySelectorAll('.face-2').forEach(face => {
-        face.style.transform = `rotateX(90deg) translateZ(${halfHeight}px)`;
+        face.style.transform = `rotateX(120deg) translateZ(${halfHeight}px)`;
     });
     
-    // For face-3 (back face)
-    document.querySelectorAll('.face-3').forEach(face => {
-        face.style.transform = `rotateX(180deg) translateZ(${halfHeight}px)`;
-    });
-    
-    // For face-4 (bottom face)
+    // For face-4 (back face at 240 degrees - replaces face-3's 180 degree position)
     document.querySelectorAll('.face-4').forEach(face => {
-        face.style.transform = `rotateX(270deg) translateZ(${halfHeight}px)`;
+        face.style.transform = `rotateX(240deg) translateZ(${halfHeight}px)`;
     });
 }
 

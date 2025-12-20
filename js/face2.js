@@ -112,21 +112,34 @@ function initializeProjects() {
         {
             title: "Expense Manager",
             description: "A comprehensive expense tracking solution featuring detailed entry management, SQLite-based database with custom table creation, and robust data visualization with statistical analysis and graphical expense summaries.",
-            tech: "Python, Flet, SQLite, Matplotlib",
+            tech: [
+                { name: "Python", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
+                { name: "Flet", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg" },
+                { name: "SQLite", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg" }            ],
             image: "../img/project1.png",
             link: "https://github.com/jonasgueiros/expenses"
         },
         {
             title: "End-to-End Audio Router",
-            description: "This application routes, processes and renders audio end-to-end. It discovers and manages physical and virtual audio devices, routes audio between them, and applies DSP effects (including a native Rust DSP module) for low-latency processing. The app provides audio-processing utilities (filters, equalizer, mixers), a graphical UI for configuring devices and effects, and notifications for device events. It also includes tests and configuration handling so users can save and load audio setups.",
-            tech: "Rust, C++, JavaScript, Web Audio API, WASM",
-            image: "../img/sound.png",
+            description: "Audio routing and processing application with DSP effects and low-latency support. Manages physical and virtual audio devices with a graphical UI for configuration.",
+            tech: [
+                { name: "Rust", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-original.svg" },
+                { name: "C++", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
+                { name: "JavaScript", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" },
+                { name: "Web Audio", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" }
+            ],
+            image: "img/sound.png",
             link: "https://github.com/jonasgueiros/sound"
         },
         {
             title: "Medical Access Portal",
             description: "Secure healthcare platform with dual authentication system for patients and doctors, separate access points with role-specific redirects, and robust security features including PHP's password_verify function for credential validation.",
-            tech: "PHP, MySQL, JavaScript, HTML/CSS",
+            tech: [
+                { name: "PHP", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" },
+                { name: "MySQL", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" },
+                { name: "JavaScript", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" },
+                { name: "HTML5", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" }
+            ],
             image: "img/project2-1.jpg",
             link: "https://github.com/jonasgueiros/clinica"
         }
@@ -146,8 +159,11 @@ function initializeProjects() {
     function updateProjectDisplay() {
         const project = projects[currentProjectIndex];
         
-        // Update text elements
-        projectTitle.textContent = project.title;
+        // Update project link
+        projectLink.href = project.link;
+        projectLink.textContent = project.title;
+        projectTitle.innerHTML = '';
+        projectTitle.appendChild(projectLink);
         
         // Use shorter description on mobile
         if (isMobile && mobileDescriptions[project.title]) {
@@ -156,7 +172,22 @@ function initializeProjects() {
             projectDescription.textContent = project.description;
         }
         
-        projectTech.textContent = project.tech;
+        // Generate skill icons for technologies
+        const techList = projectTech;
+        techList.innerHTML = '';
+        project.tech.forEach(techItem => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <div class="skill-item">
+                    <div class="skill-icon">
+                        <img src="${techItem.icon}" alt="${techItem.name} Logo">
+                    </div>
+                    <div class="skill-text"><span>${techItem.name}</span></div>
+                </div>
+            `;
+            techList.appendChild(li);
+        });
+        
         projectImage.src = project.image;
         projectLink.href = project.link;
     }

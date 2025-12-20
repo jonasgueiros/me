@@ -14,7 +14,6 @@
                 <!-- Face placeholders - content will be loaded from separate files -->
                 <div class="face face-1" id="face1-container"></div>
                 <div class="face face-2" id="face2-container"></div>
-                <div class="face face-3" id="face3-container"></div>
                 <div class="face face-4" id="face4-container"></div>
             </div>
         </div>
@@ -24,19 +23,32 @@
         <div class="nav-dot" data-index="0"></div>
         <div class="nav-dot" data-index="1"></div>
         <div class="nav-dot" data-index="2"></div>
-        <div class="nav-dot" data-index="3"></div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Cache bust all script requests
+        window.cbv = Date.now();
+    </script>
+    <script src="js/script.js?v=1"></script>
+    <script src="js/face2.js?v=1"></script>
+    <script>
+        // Cache bust by adding timestamp to script loading
+        const scriptTags = document.querySelectorAll('script[src]');
+        scriptTags.forEach(tag => {
+            if (tag.src && !tag.src.includes('?v=')) {
+                tag.src += '?v=' + Date.now();
+            }
+        });
+    </script>
     <script>
         // Load face content from separate HTML files in the html folder
         document.addEventListener('DOMContentLoaded', function() {
-            const faces = ['html/face1.html', 'html/face2.html', 'html/face3.html', 'html/face4.html'];
-            const containers = ['face1-container', 'face2-container', 'face3-container', 'face4-container'];
+            const faces = ['html/face1.html', 'html/face2.html', 'html/face4.html'];
+            const containers = ['face1-container', 'face2-container', 'face4-container'];
             
             // Load each face content
             faces.forEach((faceFile, index) => {
-                fetch(faceFile)
+                fetch(faceFile + '?v=' + window.cbv)
                     .then(response => response.text())
                     .then(html => {
                         document.getElementById(containers[index]).innerHTML = html;

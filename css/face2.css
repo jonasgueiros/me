@@ -59,6 +59,17 @@
     text-shadow: 0 0 10px rgba(0, 255, 119, 0.3); /* Optional: adds a subtle glow */
 }
 
+.project-right h2 a {
+    color: #00ff77;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.project-right h2 a:hover {
+    color: #00cc5e;
+    text-shadow: 0 0 15px rgba(0, 255, 119, 0.5);
+}
+
 .project-right p {
     margin-bottom: 20px;
     line-height: 1.6;
@@ -91,4 +102,60 @@
 .view-button:hover {
     background-color: #00cc5e;
     transform: translateY(-2px);
+}
+
+/* Skill Icons for Technologies */
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.skills-list li {
+    margin-bottom: 0.5rem;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.skill-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 255, 119, 0.1);
+    border: 1px solid #00ff77;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 255, 119, 0.2);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.skill-icon:hover {
+    transform: translateY(-5px);
+}
+
+.skill-icon img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+.skill-text {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+.skill-text span {
+    color: #00ff77;
+    font-weight: bold;
 }

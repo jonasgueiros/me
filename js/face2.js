@@ -142,6 +142,17 @@ function initializeProjects() {
             ],
             image: "img/project2-1.jpg",
             link: "https://github.com/jonasgueiros/clinica"
+        },
+        {
+            title: "Menu Catalog",
+            description: "Restaurant menu catalog webpage with category browsing, featured items display, shopping cart system, checkout with multiple payment methods, and customer feedback functionality.",
+            tech: [
+                { name: "HTML5", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" },
+                { name: "CSS3", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" },
+                { name: "JavaScript", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" }
+            ],
+            image: "img/menu.png",
+            link: "https://github.com/jonasgueiros/menu"
         }
     ];
 

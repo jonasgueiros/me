@@ -119,9 +119,7 @@ function initializeProjects() {
             description: "Audio routing and processing application with DSP effects and low-latency support. Manages physical and virtual audio devices with a graphical UI for configuration.",
             tech: [
                 { name: "Rust", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-original.svg" },
-                { name: "C++", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" },
-                { name: "JavaScript", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg" },
-                { name: "Web Audio", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" }
+                { name: "Python", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
             ],
             image: "img/sound.png",
             link: "https://github.com/jonasgueiros/sound"

@@ -52,12 +52,7 @@ function adjustProjectLayoutForMobile() {
             // Style tech container
             const techContainer = document.querySelector('.tech-container');
             if (techContainer) {
-                const techTitle = techContainer.querySelector('h3');
                 const techList = techContainer.querySelector('p');
-                
-                if (techTitle) {
-                    techTitle.style.fontSize = '0.75rem';
-                }
                 
                 if (techList) {
                     techList.style.fontSize = '0.6rem';
@@ -110,7 +105,7 @@ function initializeProjects() {
 
     const projects = [
         {
-            title: "Expense Manager",
+            title: "1/4 Expense Manager",
             description: "A comprehensive expense tracking solution featuring detailed entry management, SQLite-based database with custom table creation, and robust data visualization with statistical analysis and graphical expense summaries.",
             tech: [
                 { name: "Python", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" },
@@ -120,7 +115,7 @@ function initializeProjects() {
             link: "https://github.com/jonasgueiros/expenses"
         },
         {
-            title: "End-to-End Audio Router",
+            title: "2/4 End-to-End Audio Router",
             description: "Audio routing and processing application with DSP effects and low-latency support. Manages physical and virtual audio devices with a graphical UI for configuration.",
             tech: [
                 { name: "Rust", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-original.svg" },
@@ -132,7 +127,7 @@ function initializeProjects() {
             link: "https://github.com/jonasgueiros/sound"
         },
         {
-            title: "Menu Catalog",
+            title: "3/4 Menu Catalog",
             description: "Restaurant menu catalog webpage with category browsing, featured items display, shopping cart system, checkout with multiple payment methods, and customer feedback functionality.",
             tech: [
                 { name: "HTML5", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" },
@@ -143,7 +138,7 @@ function initializeProjects() {
             link: "https://github.com/jonasgueiros/menu"
         },
         {
-            title: "Medical Access Portal",
+            title: "4/4 Medical Access Portal",
             description: "Secure healthcare platform with dual authentication system for patients and doctors, separate access points with role-specific redirects, and robust security features including PHP's password_verify function for credential validation.",
             tech: [
                 { name: "PHP", icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" },

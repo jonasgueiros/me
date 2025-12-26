@@ -337,10 +337,6 @@ const originalMobileStyles = `
         margin-bottom: 6px !important;
     }
     
-    .mobile-view .project-right .tech-container h3 {
-        font-size: 0.75rem !important;
-    }
-    
     .mobile-view .project-right .tech-container p {
         font-size: 0.6rem !important;
     }
@@ -360,11 +356,6 @@ const originalMobileStyles = `
     .mobile-view .skills-section .skill-category {
         padding: 4px !important;
         margin-bottom: 4px !important;
-    }
-    
-    .mobile-view .skill-category h3 {
-        font-size: 0.6rem !important;
-        margin-bottom: 2px !important;
     }
     
     .mobile-view .skill-list li {
@@ -414,11 +405,6 @@ const originalMobileStyles = `
     .mobile-view .skills-section .skill-category {
         padding: 3px !important; /* Reduced from 4px */
         margin-bottom: 3px !important; /* Reduced from 4px */
-    }
-    
-    .mobile-view .skill-category h3 {
-        font-size: 0.55rem !important; /* Reduced from 0.6rem */
-        margin-bottom: 1px !important; /* Reduced from 2px */
     }
     
     .mobile-view .skill-list li {
